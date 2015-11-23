@@ -1,0 +1,13 @@
+%nav
+  %ul.pagination
+    %li{ :class => "#{ @page.to_i == 1 ? "disabled" : ""}" }
+      %a{"aria-label" => "Previous", :href => "#{ @page.to_i != 1 ? "#{root_url}/home/index?page=#{(@page.to_i)-1}&per_page=#{@per_page}" : "#"}" }
+        %span{"aria-hidden" => "true"} «
+    -for i in 1..@data['total_pages']
+      %li
+        %a{:href => "#{root_url}/home/index?page=#{i}&per_page=#{@per_page}"} #{i}
+    %li{ :class => "#{ @data['total_pages'].to_i == @page.to_i ? "disabled" : ""}" }
+      %a{"aria-label" => "Next", :href => "#{ @data['total_pages'].to_i != @page.to_i ? "#{root_url}/home/index?page=#{(@page.to_i)+1}&per_page=#{@per_page}" : "#"}" }
+        %span{"aria-hidden" => "true"} »
+
+

@@ -1,0 +1,30 @@
+.panel.panel-default
+  %table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th.header ID
+        %th.header Title
+        %th.header Created At
+        %th.header Updated At
+        %th.header Picture        
+    %tbody
+      -@data['data'].each do |post|
+        %tr
+          %td=post["id"]
+          %td=post["caption"]
+          %td=post["created_at"]
+          %td=post["updated_at"]
+          %td
+            %a{:href => "#{post["image_url"]}"}
+              %img.thumb{:alt => "#{post["caption"]}", :height => "125", :src => "#{post["thumb_url"]}"}
+%nav
+  %ul.pagination
+    %li
+      %a{"aria-label" => "Previous", :href => "#{root_url}/home/index?page=#{(params[:page].to_i)-1}&per_page=#{params[:per_page]}"}
+        %span{"aria-hidden" => "true"} «
+    -for i in 1..@data['total_pages']
+      %li
+        %a{:href => "#{root_url}/home/index?page=#{i}&per_page=5"} #{i}
+    %li-if params[:page].to_i == @data['total_pages'] puts ".disabled"
+      %a{"aria-label" => "Next", :href => "#{root_url}/home/index?page=#{(params[:page].to_i)+1}&per_page=#{params[:per_page]}"}
+        %span{"aria-hidden" => "true"} »

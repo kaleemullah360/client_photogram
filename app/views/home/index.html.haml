@@ -1,0 +1,22 @@
+=render partial: "header"
+.panel-body
+  %table.table.table-condensed.table-striped
+    %thead
+      %tr
+        %th.header ID
+        %th.header Title
+        %th.header Created At
+        %th.header Updated At
+        %th.header Picture        
+    %tbody
+      -@data['data'].each do |post|
+        %tr
+          %td=post["id"]
+          %td=post["caption"]
+          %td=post["created_at"]
+          %td=post["updated_at"]
+          %td
+            %a{:href => "#{post["image_url"]}"}
+              %img.thumb{:alt => "#{post["caption"]}", :height => "125", :src => "#{post["thumb_url"]}"}
+  =render partial: "paginate"
+  =render partial: "footer"
