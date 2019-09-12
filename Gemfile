@@ -52,4 +52,4 @@ end
   gem 'bootstrap-sass', '~> 3.3.5.1' # to use bootstrap
   gem 'will_paginate', '~> 3.0.7' # do pagination in Photogram
   gem 'will_paginate-bootstrap'   #will_paginate-bootstrap gem makes css very easy.
-  gem 'devise', '~> 3.5.2'  #for user roles ans authenticated
+  gem 'devise', '~> 4.7.1'  #for user roles ans authenticated
